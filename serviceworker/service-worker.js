@@ -1,9 +1,10 @@
-var CACHE_NAME = 'my-site-cache-v1';
+var CACHE_NAME = 'Clock-serviceworker';
 var urlsToCache = [
+  '/serviceworker/',
   '/serviceworker/index.html',
   '/serviceworker/index.js',
   '/serviceworker/index.css',
-  '/serviceworker/logo.jpg',
+  '/serviceworker/logo.jpg'
 ];
 
 self.addEventListener('install', function(event) {
