@@ -1,20 +1,17 @@
 (function () {
 
-    if (navigator.serviceWorker) {
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/serviceworker/service-worker.js').then(function(registration) {
+    // Registration was successful
+    console.log('ServiceWorker registration successful with scope: ',    registration.scope);
+  }).catch(function(err) {
+    // registration failed :(
+    console.log('ServiceWorker registration failed: ', err);
+  });
+}
 
-        var msgIpt = document.getElementById('ipt'),
-            showArea = document.getElementById('show'),
-            sendBtn = document.getElementById('sendBtn');
+setInterval(function () {
+    document.getElementById('current_date').value = new Date();
+}, 1000);
 
-        navigator.serviceWorker.register('/serviceworker/service-worker.js');
-        navigator.serviceWorker.addEventListener('message', function (event) {
-            showArea.innerHTML = showArea.innerHTML + ('<li>' + event.data.message + '</li>');
-        });
-
-        sendBtn.addEventListener('click', function () {
-            // 发送数据
-            navigator.serviceWorker.controller.postMessage(msgIpt.value);
-            msgIpt.value = '';
-        });
-    }
-})();
+ })();

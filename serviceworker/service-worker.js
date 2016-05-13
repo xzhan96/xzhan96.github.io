@@ -1,33 +1,33 @@
+var CACHE_NAME = 'my-site-cache-v1';
+var urlsToCache = [
+  '/serviceworker/index.html',
+  '/serviceworker/index.js',
+  '/serviceworker/index.css',
+  '/serviceworker/logo.jpg',
+];
 
-self.addEventListener('message', function(event) {
-    var promise = self.clients.matchAll()
-        .then(function(clientList) {
-            var senderID = event.source ? event.source.id : 'unknown';
-
-            if (!event.source) {
-                console.log('event.source is null; we don\'t know the sender of the ' +
-                    'message');
-            }
-
-            clientList.forEach(function(client) {
-
-                if (client.id === senderID) {
-                    return;
-                }
-                client.postMessage({
-                    client: senderID,
-                    message: event.data
-                });
-            });
-        });
-
-
-    if (event.waitUntil) {
-        event.waitUntil(promise);
-    }
+self.addEventListener('install', function(event) {
+  // Perform install steps
+  event.waitUntil(
+    caches.open(CACHE_NAME)
+      .then(function(cache) {
+        console.log('Opened cache');
+        return cache.addAll(urlsToCache);
+      })
+  );
 });
 
+self.addEventListener('fetch', function(event) {
+  event.respondWith(
+    caches.match(event.request)
+      .then(function(response) {
+        // Cache hit - return response
+        if (response) {
+          return response;
+        }
 
-self.addEventListener('activate', function(event) {
-    event.waitUntil(self.clients.claim());
+        return fetch(event.request);
+      }
+    )
+  );
 });
