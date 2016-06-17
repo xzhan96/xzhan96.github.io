@@ -1,0 +1,12 @@
+{
+    "name": "HexGL",
+    "start_url": "index.html",
+    "xwalk_app_version": "0.1",
+    "xwalk_package_id": "org.xwalk.hexgl",
+    "icons": [
+      {
+        "src": "icon_64.png",
+        "sizes": "64x64"
+      }
+    ]
+}
