@@ -1,7 +1,6 @@
 var CACHE_NAME = 'Clock-serviceworker';
 var urlsToCache = [
   '/serviceworker/',
-  '/serviceworker/index.html',
   '/serviceworker/index.js',
   '/serviceworker/index.css',
   '/serviceworker/logo.jpg'
