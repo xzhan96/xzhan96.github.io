@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, width=device-width" />
+<body>
+  <div>
+    <video width="400" controls autoplay>
+      <source src="vid/1.mp4" type="video/mp4">
+    </video>
+  </div>
+</body>
+
