@@ -1,0 +1,9 @@
+{
+  "name": "video",
+  "xwalk_app_version": "0.1",
+  "start_url": "index.html",
+  "xwalk_package_id": "org.xwalk.video",
+  "xwalk_android_permissions": [
+    "WRITE_EXTERNAL_STORAGE"
+  ]
+}
